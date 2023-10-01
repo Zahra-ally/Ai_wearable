@@ -1,6 +1,7 @@
 // import logo from './logo.svg';
 import "./App.css";
 import React, { useState, useEffect } from "react";
+import CurrentLocation from "./CurrentLocation";
 
 function App() {
   const outfitsByOccasion = {
@@ -234,11 +235,13 @@ function App() {
     occasion: "Casual",
   };
 
+  
   return (
     <div>
       <h1>Outfit Recommendation App</h1>
       <h2>Recommended Outfit</h2>
       <pre>{JSON.stringify(recommendedOutfit, null, 2)}</pre>
+      <CurrentLocation/>
     </div>
   );
 }
