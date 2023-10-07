@@ -1,0 +1,23 @@
+imageUrl,clothing_type,occasion,weather
+/path/to/image1.jpg,Jeans,casual outing,sunny
+/path/to/image2.jpg,T-shirt,casual outing,sunny
+/path/to/image2.jpg,Sweatshirt,casual outing,cloudy
+/path/to/image4.jpg,Shorts,casual outing,sunny
+/path/to/image9.jpg,Skirt,casual outing,sunny
+/path/to/image6.jpg,Casual Dress,casual outing,sunny
+/path/to/image7.jpg,Hoodie,casual outing,sunny
+/path/to/image8.jpg,Cardigan,casual outing,sunny
+/path/to/image10.jpg,Denim Jacket,casual outing,sunny
+/path/to/image11.jpg,Suit,formal event,cloudy
+/path/to/image12.jpg,Blouse,formal event,cloudy
+/path/to/image13.jpg,Evening Gown,formal event,cloudy
+/path/to/image14.jpg,Black Dress,formal event,cloudy
+/path/to/image15.jpg,Tuxedo,formal event,cloudy
+/path/to/image16.jpg,Evening Jacket,formal event,cloudy
+/path/to/image18.jpg,Ballroom Dress,formal event,cloudy
+/path/to/image19.jpg,Trousers,formal event,cloudy
+/path/to/image20.jpg,Sports Jacket,outdoor activities,rainy
+/path/to/image22.jpg,Hiking Pants,outdoor activities,rainy
+/path/to/image23.jpg,Moisture-Wicking T-shirt,outdoor activities,rainy
+/path/to/image26.jpg,Convertible Hiking Pants,outdoor activities,rainy
+/path/to/image29.jpg,Rain Jacket,outdoor activities,rainy

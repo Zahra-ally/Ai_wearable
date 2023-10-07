@@ -2,6 +2,7 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import CurrentLocation from "./CurrentLocation";
+import Occasion from "./Occasion";
 
 function App() {
   const outfitsByOccasion = {
@@ -242,6 +243,7 @@ function App() {
       <h2>Recommended Outfit</h2>
       <pre>{JSON.stringify(recommendedOutfit, null, 2)}</pre>
       <CurrentLocation/>
+      <Occasion/>
     </div>
   );
 }
