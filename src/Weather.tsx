@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
+import weatherSchema from "./WeatherSchema/weatherschema";
+import ClothingOccasionAndWeather from "./ClothingOccasionAndWeather";
 
 interface WeatherComponentProps {
   latitude: number;
@@ -7,13 +9,8 @@ interface WeatherComponentProps {
 }
 
 const Weather: React.FC<WeatherComponentProps> = ({ latitude, longitude }) => {
-  const weatherDataUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,relativehumidity_2m,precipitation_probability,rain,snowfall&daily=weathercode&timezone=Pacific%2FAuckland&forecast_days=1`;
+  const weatherDataUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=weathercode&timezone=Pacific%2FAuckland&forecast_days=1`;
 
-  const [temperature, setTemperature] = useState(Number);
-  const [humidity, setHumidity] = useState(Number);
-  const [precipitation, setPrecipitation] = useState(Number);
-  const [showers, setShowers] = useState(Number);
-  const [snowfall, setSnowfall] = useState(Number);
 
   // Create a new Date object
   const currentDate = new Date();
@@ -21,6 +18,17 @@ const Weather: React.FC<WeatherComponentProps> = ({ latitude, longitude }) => {
   const month = String(currentDate.getMonth() + 1).padStart(2, "0");
   const day = String(currentDate.getDate()).padStart(2, "0");
   const hours = String(currentDate.getHours()).padStart(2, "0");
+  const [currentWeatherCondition, setCurrentWeatherCondition]= useState("");
+
+  const getDescriptionByCode = (codeToFind: number) => {
+    const foundWeather = weatherSchema.find(weather => weather.code === codeToFind);
+
+    if (foundWeather) {
+      return foundWeather.description;
+    } else {
+      return 'Code not found';
+    }
+  }
 
   // Make the HTTP GET request to fetch weather data
   axios
@@ -31,7 +39,7 @@ const Weather: React.FC<WeatherComponentProps> = ({ latitude, longitude }) => {
         // Parse the JSON response
         const weatherData = response.data;
 
-        // Extract the temperature, humidity, precipitation data, etc.
+        // Extract the weathercode
         if ("hourly" in weatherData) {
           // Format the time in the desired format (HH:mm)
           const formattedDateTime = `${year}-${month}-${day}T${hours}:00`;
@@ -41,19 +49,9 @@ const Weather: React.FC<WeatherComponentProps> = ({ latitude, longitude }) => {
           const currentHour = weatherData.hourly.time.indexOf(formattedDateTime);
 
           //extract url param
-          const temperatureData = weatherData.hourly.temperature_2m;
-          const relativeHumidityData = weatherData.hourly.relativehumidity_2m;
-          const precipitationData =
-            weatherData.hourly.precipitation_probability;
-          const rainData = weatherData.hourly.rain;
-          const snowfallData = weatherData.hourly.snowfall;
+          const weatherCodeData = weatherData.hourly.weathercode;
 
-          // Get the value for each parameter at given hour
-          setTemperature(temperatureData[currentHour]);
-          setHumidity(relativeHumidityData[currentHour]);
-          setPrecipitation(precipitationData[currentHour]);
-          setShowers(rainData[currentHour]);
-          setSnowfall(snowfallData[currentHour]);
+          setCurrentWeatherCondition(getDescriptionByCode(weatherCodeData[currentHour]));
         } else {
           console.log("Weather data not found in the response.");
         }
@@ -65,14 +63,12 @@ const Weather: React.FC<WeatherComponentProps> = ({ latitude, longitude }) => {
       console.error("An error occurred while fetching weather data:", error);
     });
 
+
+
   return (
     <div>
-      <h2>Hourly Weather of your location as of {`${hours}:00`} </h2>
-      <span>Temperature: {temperature} °C</span> <br />
-      <span>Humidity: {humidity} %</span> <br />
-      <span>Precipitation Probability: {precipitation} %</span> <br />
-      <span>Showers: {showers} mm</span> <br />
-      <span>Snowfall: {snowfall} cm</span>
+      <h2>Weather condition of your location is '{currentWeatherCondition}' as of {`${hours}:00`}</h2>
+      <ClothingOccasionAndWeather weather = {currentWeatherCondition}/>
     </div>
   );
 };
