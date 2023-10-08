@@ -258,6 +258,86 @@ const weatherSchema = [
   {
     code: 64,
     description: 'Rainy'
+  },
+  {
+    code: 80,
+    description: 'Rainy'
+  },
+  {
+    code: 81,
+    description: 'Rainy'
+  },
+  {
+    code: 82,
+    description: 'Rainy'
+  },
+  {
+    code: 83,
+    description: 'Rainy'
+  },
+  {
+    code: 84,
+    description: 'Rainy'
+  },
+  {
+    code: 85,
+    description: 'Snowy'
+  },
+  {
+    code: 86,
+    description: 'Snowy'
+  },
+  {
+    code: 87,
+    description: 'Snowy'
+  },
+  {
+    code: 88,
+    description: 'Snowy'
+  },
+  {
+    code: 89,
+    description: 'Rainy'
+  },
+  {
+    code: 90,
+    description: 'Rainy'
+  },
+  {
+    code: 91,
+    description: 'Rainy'
+  },
+  {
+    code: 92,
+    description: 'Rainy'
+  },
+  {
+    code: 93,
+    description: 'Snowy'
+  },
+  {
+    code: 94,
+    description: 'Snowy'
+  },
+  {
+    code: 95,
+    description: 'Stormy'
+  },
+  {
+    code: 96,
+    description: 'Stormy'
+  },
+  {
+    code: 97,
+    description: 'Stormy'
+  },
+  {
+    code: 98,
+    description: 'Stormy'
+  },
+  {
+    code: 99,
+    description: 'Stormy'
   }
 ];
 
