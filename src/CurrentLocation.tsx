@@ -30,7 +30,7 @@ const [latitude, setLatitude] = useState(Number);
         {/* <h2>Your device's current location</h2>
         <span> latitude: {latitude}  </span> <br/>
         <span> longitude: {longitude} </span> */}
-        <Weather latitude={latitude} longitude={longitude} />
+        <Weather latitude={latitude} longitude={longitude} onWeatherUpdate={undefined} />
     </div>
   )
 }
